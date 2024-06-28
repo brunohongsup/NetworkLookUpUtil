@@ -32,6 +32,8 @@
             panel1 = new Panel();
             treeView_FileSystem = new TreeView();
             button_LookUp = new Button();
+            button_Update = new Button();
+            textBox_TargetIP = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,18 +63,38 @@
             // 
             // button_LookUp
             // 
-            button_LookUp.Location = new Point(102, 79);
+            button_LookUp.Location = new Point(218, 232);
             button_LookUp.Name = "button_LookUp";
             button_LookUp.Size = new Size(75, 23);
             button_LookUp.TabIndex = 2;
             button_LookUp.Text = "Look Up";
             button_LookUp.UseVisualStyleBackColor = true;
+            button_LookUp.Click += button_LookUp_Click;
+            // 
+            // button_Update
+            // 
+            button_Update.Location = new Point(66, 232);
+            button_Update.Name = "button_Update";
+            button_Update.Size = new Size(75, 23);
+            button_Update.TabIndex = 3;
+            button_Update.Text = "Update";
+            button_Update.UseVisualStyleBackColor = true;
+            button_Update.Click += button_Update_Click;
+            // 
+            // textBox_TargetIP
+            // 
+            textBox_TargetIP.Location = new Point(31, 93);
+            textBox_TargetIP.Name = "textBox_TargetIP";
+            textBox_TargetIP.Size = new Size(100, 23);
+            textBox_TargetIP.TabIndex = 4;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox_TargetIP);
+            Controls.Add(button_Update);
             Controls.Add(button_LookUp);
             Controls.Add(panel1);
             Controls.Add(comboBox_NetworkInterface);
@@ -80,6 +102,7 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -88,5 +111,7 @@
         private Panel panel1;
         private TreeView treeView_FileSystem;
         private Button button_LookUp;
+        private Button button_Update;
+        private TextBox textBox_TargetIP;
     }
 }
