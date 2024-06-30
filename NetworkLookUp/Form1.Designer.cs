@@ -34,6 +34,11 @@
             button_LookUp = new Button();
             button_Update = new Button();
             textBox_TargetIP = new TextBox();
+            label_TargetIP = new Label();
+            textBox_UserName = new TextBox();
+            label_UserName = new Label();
+            label1 = new Label();
+            textBox_Password = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,7 +68,7 @@
             // 
             // button_LookUp
             // 
-            button_LookUp.Location = new Point(218, 232);
+            button_LookUp.Location = new Point(178, 295);
             button_LookUp.Name = "button_LookUp";
             button_LookUp.Size = new Size(75, 23);
             button_LookUp.TabIndex = 2;
@@ -73,7 +78,7 @@
             // 
             // button_Update
             // 
-            button_Update.Location = new Point(66, 232);
+            button_Update.Location = new Point(46, 295);
             button_Update.Name = "button_Update";
             button_Update.Size = new Size(75, 23);
             button_Update.TabIndex = 3;
@@ -83,16 +88,65 @@
             // 
             // textBox_TargetIP
             // 
-            textBox_TargetIP.Location = new Point(31, 93);
+            textBox_TargetIP.Location = new Point(83, 92);
             textBox_TargetIP.Name = "textBox_TargetIP";
             textBox_TargetIP.Size = new Size(100, 23);
             textBox_TargetIP.TabIndex = 4;
+            // 
+            // label_TargetIP
+            // 
+            label_TargetIP.AutoSize = true;
+            label_TargetIP.BorderStyle = BorderStyle.FixedSingle;
+            label_TargetIP.Location = new Point(46, 98);
+            label_TargetIP.Name = "label_TargetIP";
+            label_TargetIP.Size = new Size(19, 17);
+            label_TargetIP.TabIndex = 5;
+            label_TargetIP.Text = "IP";
+            // 
+            // textBox_UserName
+            // 
+            textBox_UserName.Location = new Point(83, 138);
+            textBox_UserName.Name = "textBox_UserName";
+            textBox_UserName.Size = new Size(100, 23);
+            textBox_UserName.TabIndex = 6;
+            // 
+            // label_UserName
+            // 
+            label_UserName.AutoSize = true;
+            label_UserName.BorderStyle = BorderStyle.FixedSingle;
+            label_UserName.Location = new Point(10, 141);
+            label_UserName.Name = "label_UserName";
+            label_UserName.Size = new Size(67, 17);
+            label_UserName.TabIndex = 7;
+            label_UserName.Text = "User Name";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Location = new Point(10, 198);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 17);
+            label1.TabIndex = 8;
+            label1.Text = "Password";
+            // 
+            // textBox_Password
+            // 
+            textBox_Password.Location = new Point(83, 195);
+            textBox_Password.Name = "textBox_Password";
+            textBox_Password.Size = new Size(100, 23);
+            textBox_Password.TabIndex = 9;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox_Password);
+            Controls.Add(label1);
+            Controls.Add(label_UserName);
+            Controls.Add(textBox_UserName);
+            Controls.Add(label_TargetIP);
             Controls.Add(textBox_TargetIP);
             Controls.Add(button_Update);
             Controls.Add(button_LookUp);
@@ -113,5 +167,10 @@
         private Button button_LookUp;
         private Button button_Update;
         private TextBox textBox_TargetIP;
+        private Label label_TargetIP;
+        private TextBox textBox_UserName;
+        private Label label_UserName;
+        private Label label1;
+        private TextBox textBox_Password;
     }
 }

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Text;
 using System.Net.NetworkInformation;
+using System.Net;
 
 namespace NetworkLookUp
 {
@@ -67,7 +68,7 @@ namespace NetworkLookUp
         private void button_LookUp_Click(object sender, EventArgs e)
         {
             var selectedAdapterDesc = comboBox_NetworkInterface.SelectedItem as NetworkAdapterDesc;
-            if(selectedAdapterDesc == null)
+            if (selectedAdapterDesc == null)
             {
                 Debug.Assert(false);
                 return;
@@ -81,7 +82,21 @@ namespace NetworkLookUp
             }
 
             var ipProperty = adapter.GetIPProperties();
-            var targetIp = textBox_TargetIP.Text;
+            var networkPath = textBox_TargetIP.Text;
+            var userName = textBox_UserName.Text;
+            var password = textBox_Password.Text;
+            var credentials = new NetworkCredential(userName, password);
+
+            using (new SharedFolderConnector(networkPath, credentials))
+            {
+                var fileList = Directory.GetFiles(networkPath);
+                foreach (var item in fileList)
+                {
+                    treeView_FileSystem.Nodes.Add(item);    
+                }
+                
+            }
+
         }
     }
 }
