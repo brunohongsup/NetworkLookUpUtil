@@ -81,10 +81,21 @@ namespace NetworkLookUp
                 return;
             }
 
-            var ipProperty = adapter.GetIPProperties();
             var networkPath = textBox_TargetIP.Text;
             var userName = textBox_UserName.Text;
             var password = textBox_Password.Text;
+            if(networkPath.Length == 0)
+            {
+                //Debug.Assert(false);
+                //ToDo : 
+            }
+            
+            if(userName.Length == 0)
+            {
+
+            }
+
+            var ipProperty = adapter.GetIPProperties();
             var credentials = new NetworkCredential(userName, password);
 
             using (new SharedFolderConnector(networkPath, credentials))
