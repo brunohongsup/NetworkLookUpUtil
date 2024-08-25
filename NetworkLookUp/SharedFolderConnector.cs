@@ -13,7 +13,10 @@ public class SharedFolderConnector : IDisposable
         var netResource = new NetResource
         {
             ResourceType = ResourceType.Any,
-            RemoteName = _networkName
+            RemoteName = _networkName,
+            LocalName = null,
+            Provider = null,
+            Scope = ResourceScope.Connected
         };
 
         var userName = string.IsNullOrEmpty(credentials.Domain)
@@ -28,6 +31,7 @@ public class SharedFolderConnector : IDisposable
 
         if (result != 0)
         {
+            int error = Marshal.GetLastWin32Error();
             throw new Win32Exception(result, "Error connecting to remote share");
         }
     }

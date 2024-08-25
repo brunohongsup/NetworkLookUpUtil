@@ -32,7 +32,6 @@ namespace NetworkLookUp
                     continue;
                 }
 
-
                 var uniCast = adapterProperties.UnicastAddresses;
                 foreach (var uni in uniCast)
                 {
@@ -100,6 +99,7 @@ namespace NetworkLookUp
 
             using (new SharedFolderConnector(networkPath, credentials))
             {
+                //ToDo : Access Shared Folder Directory on the remote device
                 var fileList = Directory.GetFiles(networkPath);
                 foreach (var item in fileList)
                 {
