@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Net.NetworkInformation;
 using System.Net;
+using System.Collections.Generic;
 
 namespace NetworkLookUp
 {
@@ -63,7 +64,7 @@ namespace NetworkLookUp
         {
             InitializeNetworkComboBox();
         }
-
+       
         private void button_LookUp_Click(object sender, EventArgs e)
         {
             var selectedAdapterDesc = comboBox_NetworkInterface.SelectedItem as NetworkAdapterDesc;
@@ -80,13 +81,22 @@ namespace NetworkLookUp
                 return;
             }
 
-            var networkPath = textBox_TargetIP.Text;
+            var networkIp = textBox_TargetIP.Text;
             var userName = textBox_UserName.Text;
             var password = textBox_Password.Text;
-            if(networkPath.Length == 0)
+            var networkPath = textBox_Path.Text;    
+            if(networkIp.Length == 0)
             {
                 //Debug.Assert(false);
                 //ToDo : 
+                string message = "You did not enter valid ip.";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
             }
             
             if(userName.Length == 0)
@@ -94,14 +104,36 @@ namespace NetworkLookUp
 
             }
 
+            if(networkPath.Length == 0)
+            {
+                string message = "You did not enter valid path.";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
+
+
             var ipProperty = adapter.GetIPProperties();
             var credentials = new NetworkCredential(userName, password);
 
-            using (new SharedFolderConnector(networkPath, credentials))
+            using (new SharedFolderConnector(networkIp, credentials))
             {
                 //ToDo : Access Shared Folder Directory on the remote device
-                var fileList = Directory.GetFiles(networkPath);
-                foreach (var item in fileList)
+                StringBuilder path = new();
+                path.AppendFormat(networkIp);
+                path.AppendFormat(networkPath);
+                if (!Directory.Exists(path.ToString()))
+                {
+                    
+                }
+                
+                treeView_FileSystem.Nodes.Clear();  
+                var sharedDirList = Directory.GetDirectories(path.ToString());
+                foreach (var item in sharedDirList)
                 {
                     treeView_FileSystem.Nodes.Add(item);    
                 }

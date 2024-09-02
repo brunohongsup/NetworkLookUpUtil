@@ -36,6 +36,7 @@ public class SharedFolderConnector : IDisposable
         }
     }
 
+
     ~SharedFolderConnector()
     {
         Dispose(false);

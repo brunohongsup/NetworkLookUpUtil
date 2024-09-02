@@ -39,6 +39,8 @@
             label_UserName = new Label();
             label1 = new Label();
             textBox_Password = new TextBox();
+            label_Path = new Label();
+            textBox_Path = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -105,7 +107,7 @@
             // 
             // textBox_UserName
             // 
-            textBox_UserName.Location = new Point(83, 138);
+            textBox_UserName.Location = new Point(83, 214);
             textBox_UserName.Name = "textBox_UserName";
             textBox_UserName.Size = new Size(100, 23);
             textBox_UserName.TabIndex = 6;
@@ -114,7 +116,7 @@
             // 
             label_UserName.AutoSize = true;
             label_UserName.BorderStyle = BorderStyle.FixedSingle;
-            label_UserName.Location = new Point(10, 141);
+            label_UserName.Location = new Point(10, 220);
             label_UserName.Name = "label_UserName";
             label_UserName.Size = new Size(67, 17);
             label_UserName.TabIndex = 7;
@@ -124,7 +126,7 @@
             // 
             label1.AutoSize = true;
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(10, 198);
+            label1.Location = new Point(10, 252);
             label1.Name = "label1";
             label1.Size = new Size(59, 17);
             label1.TabIndex = 8;
@@ -132,16 +134,35 @@
             // 
             // textBox_Password
             // 
-            textBox_Password.Location = new Point(83, 195);
+            textBox_Password.Location = new Point(83, 246);
             textBox_Password.Name = "textBox_Password";
             textBox_Password.Size = new Size(100, 23);
             textBox_Password.TabIndex = 9;
+            // 
+            // label_Path
+            // 
+            label_Path.AutoSize = true;
+            label_Path.BorderStyle = BorderStyle.FixedSingle;
+            label_Path.Location = new Point(32, 159);
+            label_Path.Name = "label_Path";
+            label_Path.Size = new Size(33, 17);
+            label_Path.TabIndex = 10;
+            label_Path.Text = "Path";
+            // 
+            // textBox_Path
+            // 
+            textBox_Path.Location = new Point(83, 153);
+            textBox_Path.Name = "textBox_Path";
+            textBox_Path.Size = new Size(100, 23);
+            textBox_Path.TabIndex = 11;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox_Path);
+            Controls.Add(label_Path);
             Controls.Add(textBox_Password);
             Controls.Add(label1);
             Controls.Add(label_UserName);
@@ -172,5 +193,7 @@
         private Label label_UserName;
         private Label label1;
         private TextBox textBox_Password;
+        private Label label_Path;
+        private TextBox textBox_Path;
     }
 }
