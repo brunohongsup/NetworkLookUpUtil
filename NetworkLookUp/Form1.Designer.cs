@@ -67,6 +67,7 @@
             treeView_FileSystem.Name = "treeView_FileSystem";
             treeView_FileSystem.Size = new Size(456, 450);
             treeView_FileSystem.TabIndex = 0;
+            treeView_FileSystem.NodeMouseDoubleClick += treeView_FileSystem_NodeMouseDoubleClick;
             // 
             // button_LookUp
             // 
@@ -118,7 +119,7 @@
             label_UserName.BorderStyle = BorderStyle.FixedSingle;
             label_UserName.Location = new Point(10, 220);
             label_UserName.Name = "label_UserName";
-            label_UserName.Size = new Size(67, 17);
+            label_UserName.Size = new Size(68, 17);
             label_UserName.TabIndex = 7;
             label_UserName.Text = "User Name";
             // 

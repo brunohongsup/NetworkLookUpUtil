@@ -64,7 +64,7 @@ namespace NetworkLookUp
         {
             InitializeNetworkComboBox();
         }
-       
+
         private void button_LookUp_Click(object sender, EventArgs e)
         {
             var selectedAdapterDesc = comboBox_NetworkInterface.SelectedItem as NetworkAdapterDesc;
@@ -84,12 +84,12 @@ namespace NetworkLookUp
             var networkIp = textBox_TargetIP.Text;
             var userName = textBox_UserName.Text;
             var password = textBox_Password.Text;
-            var networkPath = textBox_Path.Text;    
-            if(networkIp.Length == 0)
+            var networkPath = textBox_Path.Text;
+            if (networkIp.Length == 0)
             {
                 //Debug.Assert(false);
                 //ToDo : 
-                string message = "You did not enter valid ip.";
+                string message = "ip가 잘못 되었습니다.";
                 string caption = "Error Detected in Input";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
@@ -98,15 +98,15 @@ namespace NetworkLookUp
                 result = MessageBox.Show(message, caption, buttons);
                 return;
             }
-            
-            if(userName.Length == 0)
+
+            if (userName.Length == 0)
             {
 
             }
 
-            if(networkPath.Length == 0)
+            if (networkPath.Length == 0)
             {
-                string message = "You did not enter valid path.";
+                string message = "경로가 잘못 되었습니다.";
                 string caption = "Error Detected in Input";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
@@ -128,15 +128,32 @@ namespace NetworkLookUp
                 path.AppendFormat(networkPath);
                 if (!Directory.Exists(path.ToString()))
                 {
-                    
+
                 }
-                
-                treeView_FileSystem.Nodes.Clear();  
+
+                treeView_FileSystem.Nodes.Clear();
                 var sharedDirList = Directory.GetDirectories(path.ToString());
                 foreach (var item in sharedDirList)
                 {
-                    treeView_FileSystem.Nodes.Add(item);    
+                    treeView_FileSystem.Nodes.Add(item);
                 }
+
+            }
+
+        }
+
+        private void treeView_FileSystem_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            var targetPath = e.Node.Text;
+            bool doesDirExist = Directory.Exists(targetPath);   
+            if(doesDirExist)
+            {
+
+            }
+            else
+            {
+                //Directory does not exist
+                Debug.Assert(false);    
                 
             }
 
