@@ -3,6 +3,7 @@ using System.Text;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace NetworkLookUp
 {
@@ -128,33 +129,87 @@ namespace NetworkLookUp
                 path.AppendFormat(networkPath);
                 if (!Directory.Exists(path.ToString()))
                 {
+                    string message = "경로가 잘못 되었습니다.";
+                    string caption = "Error Detected in Input";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
 
+                    // Displays the MessageBox.
+                    result = MessageBox.Show(message, caption, buttons);
+                    return;
                 }
 
                 treeView_FileSystem.Nodes.Clear();
-                var sharedDirList = Directory.GetDirectories(path.ToString());
-                foreach (var item in sharedDirList)
+                var rootNode = new TreeNode(path.ToString());   
+                
+
+                var dirList = Directory.GetDirectories(path.ToString());
+                foreach (var item in dirList)
                 {
                     treeView_FileSystem.Nodes.Add(item);
                 }
 
+                var filesList = Directory.GetFiles(path.ToString());
+                foreach (var item in filesList)
+                {
+                    treeView_FileSystem.Nodes.Add(item.ToString());
+                }
             }
 
+        }
+
+        private void AddFileSystemNodesRecursive(TreeNode? parent, string nodeTxt)
+        {
+            string path = nodeTxt;
+            if (!Directory.Exists(path))
+            {
+                return;
+            }
+            
+            var insertDirNode = new TreeNode(path.ToString()); 
+            var dirList = Directory.GetDirectories(path.ToString());
+            var filesList = Directory.GetFiles(path.ToString());
+            foreach(var file in filesList)
+            {
+                var fileName = file.ToString();
+                if (fileName.Contains("ini"))
+                {
+                    continue;
+                }
+
+                insertDirNode.Nodes.Add(new TreeNode(fileName));        
+            }
+
+            foreach (var dir in dirList)
+            {
+                AddFileSystemNodesRecursive(insertDirNode, dir);
+            }
+
+            if (parent == null)
+            {
+                treeView_FileSystem.Nodes.Add(insertDirNode);
+            }
+
+            else
+            {
+                parent.Nodes.Add(insertDirNode);    
+            }
         }
 
         private void treeView_FileSystem_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             var targetPath = e.Node.Text;
-            bool doesDirExist = Directory.Exists(targetPath);   
-            if(doesDirExist)
+            bool doesDirExist = Directory.Exists(targetPath);
+            if (doesDirExist)
             {
+                var directoriesWithin = Directory.GetDirectories(targetPath);
 
             }
             else
             {
                 //Directory does not exist
-                Debug.Assert(false);    
-                
+                Debug.Assert(false);
+
             }
 
         }
