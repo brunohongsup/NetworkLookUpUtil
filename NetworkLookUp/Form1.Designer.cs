@@ -41,6 +41,7 @@
             textBox_Password = new TextBox();
             label_Path = new Label();
             textBox_Path = new TextBox();
+            button_SharedLookUp = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -157,11 +158,22 @@
             textBox_Path.Size = new Size(100, 23);
             textBox_Path.TabIndex = 11;
             // 
+            // button_SharedLookUp
+            // 
+            button_SharedLookUp.Location = new Point(32, 355);
+            button_SharedLookUp.Name = "button_SharedLookUp";
+            button_SharedLookUp.Size = new Size(127, 31);
+            button_SharedLookUp.TabIndex = 12;
+            button_SharedLookUp.Text = "Shared LookUp";
+            button_SharedLookUp.UseVisualStyleBackColor = true;
+            button_SharedLookUp.Click += button_SharedLookUp_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button_SharedLookUp);
             Controls.Add(textBox_Path);
             Controls.Add(label_Path);
             Controls.Add(textBox_Password);
@@ -196,5 +208,6 @@
         private TextBox textBox_Password;
         private Label label_Path;
         private TextBox textBox_Path;
+        private Button button_SharedLookUp;
     }
 }

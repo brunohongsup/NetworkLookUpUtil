@@ -114,9 +114,8 @@ namespace NetworkLookUp
 
                 // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
-                return;
+                //return;
             }
-
 
             var ipProperty = adapter.GetIPProperties();
             var credentials = new NetworkCredential(userName, password);
@@ -126,6 +125,12 @@ namespace NetworkLookUp
                 //ToDo : Access Shared Folder Directory on the remote device
                 StringBuilder path = new();
                 path.AppendFormat(networkIp);
+                bool doesPathExist = Path.Exists(path.ToString());
+                if (!doesPathExist)
+                {
+                    Debug.Assert(false);
+                }
+
                 path.AppendFormat(networkPath);
                 if (!Directory.Exists(path.ToString()))
                 {
@@ -140,59 +145,7 @@ namespace NetworkLookUp
                 }
 
                 treeView_FileSystem.Nodes.Clear();
-                var rootNode = new TreeNode(path.ToString());   
-                
 
-                var dirList = Directory.GetDirectories(path.ToString());
-                foreach (var item in dirList)
-                {
-                    treeView_FileSystem.Nodes.Add(item);
-                }
-
-                var filesList = Directory.GetFiles(path.ToString());
-                foreach (var item in filesList)
-                {
-                    treeView_FileSystem.Nodes.Add(item.ToString());
-                }
-            }
-
-        }
-
-        private void AddFileSystemNodesRecursive(TreeNode? parent, string nodeTxt)
-        {
-            string path = nodeTxt;
-            if (!Directory.Exists(path))
-            {
-                return;
-            }
-            
-            var insertDirNode = new TreeNode(path.ToString()); 
-            var dirList = Directory.GetDirectories(path.ToString());
-            var filesList = Directory.GetFiles(path.ToString());
-            foreach(var file in filesList)
-            {
-                var fileName = file.ToString();
-                if (fileName.Contains("ini"))
-                {
-                    continue;
-                }
-
-                insertDirNode.Nodes.Add(new TreeNode(fileName));        
-            }
-
-            foreach (var dir in dirList)
-            {
-                AddFileSystemNodesRecursive(insertDirNode, dir);
-            }
-
-            if (parent == null)
-            {
-                treeView_FileSystem.Nodes.Add(insertDirNode);
-            }
-
-            else
-            {
-                parent.Nodes.Add(insertDirNode);    
             }
         }
 
@@ -200,18 +153,76 @@ namespace NetworkLookUp
         {
             var targetPath = e.Node.Text;
             bool doesDirExist = Directory.Exists(targetPath);
+            bool doesFileExist = File.Exists(targetPath);
             if (doesDirExist)
             {
                 var directoriesWithin = Directory.GetDirectories(targetPath);
+                var filesWithin = Directory.GetFiles(targetPath);
+                var selNode = treeView_FileSystem.SelectedNode;
 
+                foreach (var file in filesWithin)
+                {
+                    TreeNode node = new(file);
+                    selNode.Nodes.Add(node);
+                }
+
+                foreach (var dir in directoriesWithin)
+                {
+                    TreeNode node = new(dir);
+                    selNode.Nodes.Add(node);
+                }
+            }
+            else if (doesFileExist)
+            {
+                //Directory does not exist
+                //Debug.Assert(false);
+                var fileInfo = new FileInfo(targetPath);
+                var dirName = fileInfo.DirectoryName;
             }
             else
             {
-                //Directory does not exist
+                //Path Does Not Exist
                 Debug.Assert(false);
-
             }
 
+        }
+
+        private void button_SharedLookUp_Click(object sender, EventArgs e)
+        {
+            if(textBox_TargetIP.Text.Length == 0)
+            {
+                string message = "ip가 잘못 되었습니다.";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
+
+            var ip = textBox_TargetIP.Text;
+            StringBuilder ipPath = new();
+            ipPath.AppendFormat("\\\\");
+            ipPath.AppendFormat(ip);
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = ipPath.ToString();    
+                //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                //openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    //filePath = openFileDialog.FileName;
+                    string filePath = openFileDialog.FileName;
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+                   
+                }
+            }
         }
     }
 }
