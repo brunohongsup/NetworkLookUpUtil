@@ -31,6 +31,9 @@
             label1 = new Label();
             label2 = new Label();
             comboBox1 = new ComboBox();
+            buttonSrcBrowse = new Button();
+            buttonDstBrowse = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -62,17 +65,46 @@
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 2;
             // 
+            // buttonSrcBrowse
+            // 
+            buttonSrcBrowse.Location = new Point(406, 96);
+            buttonSrcBrowse.Name = "buttonSrcBrowse";
+            buttonSrcBrowse.Size = new Size(91, 23);
+            buttonSrcBrowse.TabIndex = 3;
+            buttonSrcBrowse.Text = "Src Browse";
+            buttonSrcBrowse.UseVisualStyleBackColor = true;
+            // 
+            // buttonDstBrowse
+            // 
+            buttonDstBrowse.Location = new Point(406, 145);
+            buttonDstBrowse.Name = "buttonDstBrowse";
+            buttonDstBrowse.Size = new Size(91, 23);
+            buttonDstBrowse.TabIndex = 4;
+            buttonDstBrowse.Text = "Dst Browse";
+            buttonDstBrowse.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(136, 92);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 5;
+            // 
             // SharedFolderAccessDialog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(697, 450);
+            ClientSize = new Size(533, 339);
+            Controls.Add(textBox1);
+            Controls.Add(buttonDstBrowse);
+            Controls.Add(buttonSrcBrowse);
             Controls.Add(comboBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "SharedFolderAccessDialog";
             Text = "SharedFolderAccessDialog";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -80,5 +112,8 @@
         private Label label1;
         private Label label2;
         private ComboBox comboBox1;
+        private Button buttonSrcBrowse;
+        private Button buttonDstBrowse;
+        private TextBox textBox1;
     }
 }
