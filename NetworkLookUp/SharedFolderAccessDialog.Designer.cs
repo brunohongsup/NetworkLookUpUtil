@@ -33,7 +33,10 @@
             comboBox1 = new ComboBox();
             buttonSrcBrowse = new Button();
             buttonDstBrowse = new Button();
-            textBox1 = new TextBox();
+            textBoxSrcPath = new TextBox();
+            textBoxDstPath = new TextBox();
+            buttonCopy = new Button();
+            listView1 = new ListView();
             SuspendLayout();
             // 
             // label1
@@ -49,7 +52,7 @@
             // label2
             // 
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new Point(39, 144);
+            label2.Location = new Point(39, 389);
             label2.Name = "label2";
             label2.Size = new Size(82, 25);
             label2.TabIndex = 1;
@@ -67,7 +70,7 @@
             // 
             // buttonSrcBrowse
             // 
-            buttonSrcBrowse.Location = new Point(406, 96);
+            buttonSrcBrowse.Location = new Point(430, 96);
             buttonSrcBrowse.Name = "buttonSrcBrowse";
             buttonSrcBrowse.Size = new Size(91, 23);
             buttonSrcBrowse.TabIndex = 3;
@@ -76,26 +79,53 @@
             // 
             // buttonDstBrowse
             // 
-            buttonDstBrowse.Location = new Point(406, 145);
+            buttonDstBrowse.Location = new Point(430, 391);
             buttonDstBrowse.Name = "buttonDstBrowse";
             buttonDstBrowse.Size = new Size(91, 23);
             buttonDstBrowse.TabIndex = 4;
             buttonDstBrowse.Text = "Dst Browse";
             buttonDstBrowse.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxSrcPath
             // 
-            textBox1.Location = new Point(136, 92);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 5;
+            textBoxSrcPath.Location = new Point(136, 92);
+            textBoxSrcPath.Name = "textBoxSrcPath";
+            textBoxSrcPath.Size = new Size(277, 23);
+            textBoxSrcPath.TabIndex = 5;
+            // 
+            // textBoxDstPath
+            // 
+            textBoxDstPath.Location = new Point(136, 391);
+            textBoxDstPath.Name = "textBoxDstPath";
+            textBoxDstPath.Size = new Size(277, 23);
+            textBoxDstPath.TabIndex = 6;
+            // 
+            // buttonCopy
+            // 
+            buttonCopy.Location = new Point(162, 435);
+            buttonCopy.Name = "buttonCopy";
+            buttonCopy.Size = new Size(194, 64);
+            buttonCopy.TabIndex = 7;
+            buttonCopy.Text = "Copy";
+            buttonCopy.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(39, 134);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(482, 220);
+            listView1.TabIndex = 8;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // SharedFolderAccessDialog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(533, 339);
-            Controls.Add(textBox1);
+            ClientSize = new Size(557, 546);
+            Controls.Add(listView1);
+            Controls.Add(buttonCopy);
+            Controls.Add(textBoxDstPath);
+            Controls.Add(textBoxSrcPath);
             Controls.Add(buttonDstBrowse);
             Controls.Add(buttonSrcBrowse);
             Controls.Add(comboBox1);
@@ -114,6 +144,9 @@
         private ComboBox comboBox1;
         private Button buttonSrcBrowse;
         private Button buttonDstBrowse;
-        private TextBox textBox1;
+        private TextBox textBoxSrcPath;
+        private TextBox textBoxDstPath;
+        private Button buttonCopy;
+        private ListView listView1;
     }
 }
