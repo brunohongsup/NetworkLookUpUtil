@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             label2 = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxCompsInNetwork = new ComboBox();
             buttonSrcBrowse = new Button();
             buttonDstBrowse = new Button();
             textBoxSrcPath = new TextBox();
@@ -60,17 +60,17 @@
             label2.TextAlign = ContentAlignment.MiddleCenter;
             label2.Click += label2_Click;
             // 
-            // comboBox1
+            // comboBoxCompsInNetwork
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(26, 28);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 2;
+            comboBoxCompsInNetwork.FormattingEnabled = true;
+            comboBoxCompsInNetwork.Location = new Point(112, 33);
+            comboBoxCompsInNetwork.Name = "comboBoxCompsInNetwork";
+            comboBoxCompsInNetwork.Size = new Size(330, 23);
+            comboBoxCompsInNetwork.TabIndex = 2;
             // 
             // buttonSrcBrowse
             // 
-            buttonSrcBrowse.Location = new Point(430, 96);
+            buttonSrcBrowse.Location = new Point(430, 91);
             buttonSrcBrowse.Name = "buttonSrcBrowse";
             buttonSrcBrowse.Size = new Size(91, 23);
             buttonSrcBrowse.TabIndex = 3;
@@ -121,14 +121,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(557, 546);
+            ClientSize = new Size(537, 526);
             Controls.Add(listView1);
             Controls.Add(buttonCopy);
             Controls.Add(textBoxDstPath);
             Controls.Add(textBoxSrcPath);
             Controls.Add(buttonDstBrowse);
             Controls.Add(buttonSrcBrowse);
-            Controls.Add(comboBox1);
+            Controls.Add(comboBoxCompsInNetwork);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "SharedFolderAccessDialog";
@@ -141,7 +141,7 @@
 
         private Label label1;
         private Label label2;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxCompsInNetwork;
         private Button buttonSrcBrowse;
         private Button buttonDstBrowse;
         private TextBox textBoxSrcPath;

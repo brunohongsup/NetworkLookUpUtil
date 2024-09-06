@@ -224,5 +224,11 @@ namespace NetworkLookUp
                 }
             }
         }
+
+        private void button_SharedAccess_Click(object sender, EventArgs e)
+        {
+            var dlg = new SharedFolderAccessDialog();   
+            dlg.ShowDialog();
+        }
     }
 }

@@ -48,7 +48,7 @@
             // comboBox_NetworkInterface
             // 
             comboBox_NetworkInterface.FormattingEnabled = true;
-            comboBox_NetworkInterface.Location = new Point(31, 27);
+            comboBox_NetworkInterface.Location = new Point(32, 32);
             comboBox_NetworkInterface.Name = "comboBox_NetworkInterface";
             comboBox_NetworkInterface.Size = new Size(275, 23);
             comboBox_NetworkInterface.TabIndex = 0;
@@ -64,9 +64,9 @@
             // 
             // treeView_FileSystem
             // 
-            treeView_FileSystem.Location = new Point(0, 0);
+            treeView_FileSystem.Location = new Point(0, 74);
             treeView_FileSystem.Name = "treeView_FileSystem";
-            treeView_FileSystem.Size = new Size(456, 450);
+            treeView_FileSystem.Size = new Size(456, 376);
             treeView_FileSystem.TabIndex = 0;
             treeView_FileSystem.NodeMouseDoubleClick += treeView_FileSystem_NodeMouseDoubleClick;
             // 
@@ -92,7 +92,7 @@
             // 
             // textBox_TargetIP
             // 
-            textBox_TargetIP.Location = new Point(83, 92);
+            textBox_TargetIP.Location = new Point(83, 61);
             textBox_TargetIP.Name = "textBox_TargetIP";
             textBox_TargetIP.Size = new Size(100, 23);
             textBox_TargetIP.TabIndex = 4;
@@ -162,11 +162,11 @@
             // 
             button_SharedLookUp.Location = new Point(32, 355);
             button_SharedLookUp.Name = "button_SharedLookUp";
-            button_SharedLookUp.Size = new Size(127, 31);
+            button_SharedLookUp.Size = new Size(102, 31);
             button_SharedLookUp.TabIndex = 12;
-            button_SharedLookUp.Text = "Shared LookUp";
+            button_SharedLookUp.Text = "SharedAccess";
             button_SharedLookUp.UseVisualStyleBackColor = true;
-            button_SharedLookUp.Click += button_SharedLookUp_Click;
+            button_SharedLookUp.Click += button_SharedAccess_Click;
             // 
             // Form1
             // 
